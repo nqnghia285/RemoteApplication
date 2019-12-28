@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         startActivities(new Intent[]{
-                                new Intent(LoginActivity.this, MachineInfoActivity.class)});
+                                new Intent(LoginActivity.this, MainActivity.class)});
                     }
                 });
             }

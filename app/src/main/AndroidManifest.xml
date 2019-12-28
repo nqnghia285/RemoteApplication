@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.FullScreen">
-        <activity android:name=".ChartActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.FullScreen.NoActionBar"></activity>
+        <activity android:name=".ChartActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MachineInfoActivity"></activity>
+        <activity android:name=".MachineInfoActivity" />
     </application>
 
 </manifest>

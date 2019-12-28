@@ -21,7 +21,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
         android:elevation="5dp"
-        android:text="Welcome to apps"
+        android:text="Chào mừng bạn đến với ứng dụng!"
         android:textColor="@color/colorWhite"
         android:textSize="17sp"/>
 
@@ -33,10 +33,12 @@
         android:transitionName="tvLogin"
         android:layout_alignLeft="@+id/tvDesc"
         android:elevation="5dp"
-        android:text="Login"
+        android:text="Đăng nhập"
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:focusableInTouchMode="true"
+        android:focusable="auto"/>
 
     <ImageView
         android:id="@+id/circle1"
@@ -107,15 +109,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:inputType="text"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="16"
                         android:textColor="@color/colorPurple"
                         android:textStyle="bold"
                         android:textColorHint="@color/design_default_color_primary"
-                        android:hint="Username"
+                        android:hint="Tài khoản"
                         android:drawableLeft="@mipmap/ic_action_username"
                         android:background="@drawable/bt_uifb"
-                        android:layout_marginTop="10dp"
-                        android:focusableInTouchMode="false"/>
+                        android:layout_marginTop="10dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -131,13 +133,13 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:inputType="textPassword"
+                        android:maxLength="16"
                         android:textColor="@color/colorPurple"
                         android:textStyle="bold"
                         android:textColorHint="@color/design_default_color_primary"
-                        android:hint="Password"
+                        android:hint="Mật khẩu"
                         android:drawableLeft="@mipmap/ic_action_password"
-                        android:background="@drawable/bt_uifb"
-                        android:focusableInTouchMode="false"/>
+                        android:background="@drawable/bt_uifb"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -157,10 +159,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_ui"
-                    android:text="Login"
+                    android:text="Đăng nhập"
                     android:textAllCaps="false"
-                    android:textColor="@color/colorWhite"
-                    android:focusableInTouchMode="true"/>
+                    android:textColor="@color/colorWhite" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -182,7 +183,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:elevation="5dp"
-                android:text="Forgot your password?"
+                android:text="Quên mật khẩu?"
                 android:textSize="14sp"
                 android:textColor="@color/design_default_color_primary_dark"/>
 
