@@ -3,8 +3,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Ngô Thị Thu Hương</string>
+    <string name="nav_header_subtitle">Quản lý nhân sự</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -14,15 +14,21 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    
+
     <string name="menu_machine_system">Hệ thống máy sấy</string>
+    <string name="menu_machine_info">Thông tin máy sấy</string>
     <string name="menu_status_devices_and_sensor">Trạng thái thiết bị và cảm biến</string>
     <string name="menu_notifications">Thông báo</string>
     <string name="menu_recipes">Công thức sấy</string>
     <string name="menu_tasks">Công việc</string>
     <string name="menu_statistical">Thống kê</string>
     <string name="menu_account">Thông tin tài khoản</string>
-    <string name="menu_setting">Cài đặt</string>
+    <string name="menu_settings">Cài đặt</string>
     <string name="menu_about">Giới thiệu ứng dụng</string>
     <string name="menu_logout">Đăng xuất</string>
+
+    <!--oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo-->
+
+    <string name="running">Đang hoạt động</string>
+    <string name="stopped">Ngừng hoạt động</string>
 </resources>

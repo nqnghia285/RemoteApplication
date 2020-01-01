@@ -9,7 +9,13 @@
         android:id="@+id/nav_machine_system"
         android:name="com.nqnghia.remoteapplication.ui.machine_system.MachineSystemFragment"
         android:label="@string/menu_machine_system"
-        tools:layout="@layout/activity_machine_info" />
+        tools:layout="@layout/fragment_machine_system" />
+
+    <fragment
+        android:id="@+id/nav_machine_info"
+        android:name="com.nqnghia.remoteapplication.ui.machine_info.MachineInfoFragment"
+        android:label="@string/menu_machine_info"
+        tools:layout="@layout/fragment_machine_info" />
 
     <fragment
         android:id="@+id/nav_device_sensor"
@@ -48,10 +54,10 @@
         tools:layout="@layout/fragment_account" />
 
     <fragment
-        android:id="@+id/nav_setting"
+        android:id="@+id/nav_settings"
         android:name="com.nqnghia.remoteapplication.ui.setting.SettingFragment"
-        android:label="@string/menu_setting"
-        tools:layout="@layout/fragment_setting" />
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_about"
