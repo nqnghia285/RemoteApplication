@@ -7,12 +7,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +20,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -63,18 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword = findViewById(R.id.forgot_text_view);
         login = findViewById(R.id.login_button);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivities(new Intent[]{
-                                new Intent(LoginActivity.this, MainActivity.class)});
-                    }
-                });
-            }
-        });
+        login.setOnClickListener(v -> startMainActivity());
 
         fingerprint = findViewById(R.id.fingerprint_image_view);
         fingerprint.setOnClickListener(new View.OnClickListener() {
@@ -96,12 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                     FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
                     FingerprintHandler fingerprintHandler = new FingerprintHandler(v.getContext());
                     fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
-                    fingerprintHandler.addHandler(new FingerprintHandler.AuthenticationSucceeded() {
-                        @Override
-                        public void AuthSucceeded(FingerprintManager.AuthenticationResult result) {
-                            startActivities(new Intent[]{new Intent(LoginActivity.this, MainActivity.class)});
-                        }
-                    });
+                    fingerprintHandler.addHandler(result -> startMainActivity());
                 }
             }
         });
@@ -118,6 +103,12 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             fingerprint.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void startMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     @TargetApi(Build.VERSION_CODES.M)
