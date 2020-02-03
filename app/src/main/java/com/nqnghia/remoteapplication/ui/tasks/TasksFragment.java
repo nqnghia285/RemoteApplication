@@ -23,7 +23,7 @@ public class TasksFragment extends Fragment {
                 ViewModelProviders.of(this).get(TasksViewModel.class);
         View root = inflater.inflate(R.layout.fragment_tasks, container, false);
         final TextView textView = root.findViewById(R.id.text_tasks);
-        tasksViewModel.getText().observe(this, new Observer<String>() {
+        tasksViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

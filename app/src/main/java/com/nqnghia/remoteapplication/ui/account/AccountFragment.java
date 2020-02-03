@@ -23,7 +23,7 @@ public class AccountFragment extends Fragment {
                 ViewModelProviders.of(this).get(AccountViewModel.class);
         View root = inflater.inflate(R.layout.fragment_account, container, false);
         final TextView textView = root.findViewById(R.id.text_account);
-        accountViewModel.getText().observe(this, new Observer<String>() {
+        accountViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

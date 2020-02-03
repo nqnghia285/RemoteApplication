@@ -23,7 +23,7 @@ public class DeviceSensorFragment extends Fragment {
                 ViewModelProviders.of(this).get(DeviceSensorViewModel.class);
         View root = inflater.inflate(R.layout.fragment_device_sensor, container, false);
         final TextView textView = root.findViewById(R.id.text_device_sensor);
-        deviceSensorViewModel.getText().observe(this, new Observer<String>() {
+        deviceSensorViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
