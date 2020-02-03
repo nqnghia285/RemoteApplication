@@ -1,39 +1,22 @@
 package com.nqnghia.remoteapplication;
 
-import android.annotation.TargetApi;
 import android.app.KeyguardManager;
-import android.content.Context;
-import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.security.keystore.KeyGenParameterSpec;
-import android.security.keystore.KeyPermanentlyInvalidatedException;
-import android.security.keystore.KeyProperties;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialogFragment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
 
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 
-import static android.support.v4.content.ContextCompat.startActivities;
+import static androidx.core.content.ContextCompat.startActivities;
 
 public class PopupFingerprintActivity extends BottomSheetDialogFragment {
 //    private BottomSheetListener mListener;

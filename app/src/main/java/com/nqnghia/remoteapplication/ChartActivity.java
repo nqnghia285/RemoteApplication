@@ -1,7 +1,7 @@
 package com.nqnghia.remoteapplication;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.jjoe64.graphview.GraphView;
