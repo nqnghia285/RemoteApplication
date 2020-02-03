@@ -1,17 +1,13 @@
 package com.nqnghia.remoteapplication;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.CancellationSignal;
-import android.support.v4.content.ContextCompat;
-import android.widget.ImageView;
-import android.widget.TextView;
+import androidx.core.content.ContextCompat;
 
-import static android.support.v4.content.ContextCompat.startActivities;
+import static androidx.core.content.ContextCompat.startActivities;
 
 @TargetApi(Build.VERSION_CODES.M)
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
