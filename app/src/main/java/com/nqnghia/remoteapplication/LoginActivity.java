@@ -3,11 +3,15 @@ package com.nqnghia.remoteapplication;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
@@ -23,6 +27,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -39,7 +44,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements ServiceConnection {
     private static final String TAG = "LoginActivity";
     private EditText username;
     private EditText password;
@@ -54,10 +59,17 @@ public class LoginActivity extends AppCompatActivity {
     private Cipher cipher;
     private String KEY_NAME = "AndroidKey";
 
+    private LocalService.LocalBinder mLocalBinder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // Tao service va lien ket voi class hien tai
+        bindService(new Intent(this, LocalService.class),
+                this,
+                Context.BIND_AUTO_CREATE);
 
         username = findViewById(R.id.username_edit_text);
         password = findViewById(R.id.password_edit_text);
@@ -80,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                     showToast("Kiểm tra dấu vân tay");
 
                     PopupFingerprintActivity fingerprintActivity = new PopupFingerprintActivity();
-                    fingerprintActivity.setStyle(R.style.BottomSheetStyle, R.style.BottomSheetDialogTheme);
+                    fingerprintActivity.setStyle(DialogFragment.STYLE_NORMAL, R.style.BottomSheetDialogTheme);
                     fingerprintActivity.show(getSupportFragmentManager(), "popupFingerprint");
 
                     FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
@@ -105,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    // Thoat ung dung
     private void startMainActivity() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -169,5 +182,17 @@ public class LoginActivity extends AppCompatActivity {
         toast.show();
     }
 
+    @Override
+    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+        if (iBinder instanceof LocalService.LocalBinder) {
+            mLocalBinder = (LocalService.LocalBinder) iBinder;
+            //TODO
+        }
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName componentName) {
+
+    }
 }
 
