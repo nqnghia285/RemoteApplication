@@ -2,6 +2,8 @@ package com.nqnghia.remoteapplication.ui.about;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,11 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.nqnghia.remoteapplication.MainActivity;
 import com.nqnghia.remoteapplication.R;
 
 public class AboutFragment extends Fragment {
 
     private AboutViewModel aboutViewModel;
+    private MainActivity mainActivity;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,5 +35,14 @@ public class AboutFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainActivity) {
+            mainActivity = (MainActivity) context;
+            mainActivity.getFab().hide();
+        }
     }
 }

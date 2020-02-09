@@ -1,6 +1,9 @@
 package com.nqnghia.remoteapplication;
 
+import android.content.Context;
 import android.graphics.Color;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -19,6 +22,7 @@ public class ChartActivity extends AppCompatActivity {
     private LineGraphSeries<DataPoint> series2;
 
     private Random random = new Random();
+    private MainActivity mainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

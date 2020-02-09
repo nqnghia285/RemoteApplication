@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import com.nqnghia.remoteapplication.MainActivity;
 import com.nqnghia.remoteapplication.R;
 import com.nqnghia.remoteapplication.ui.humidity_temperature_chart.HumidityTemperatureFragment;
 
@@ -36,6 +37,7 @@ public class MachineInfoFragment extends Fragment {
     private FragmentActivity ctx;
 
     private Socket mSocket;
+    private MainActivity mainActivity;
 
     {
         try {
@@ -94,6 +96,10 @@ public class MachineInfoFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         ctx = (FragmentActivity) context;
+        if (context instanceof MainActivity) {
+            mainActivity = (MainActivity) context;
+            mainActivity.getFab().hide();
+        }
         super.onAttach(context);
     }
 

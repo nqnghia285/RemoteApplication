@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.nqnghia.remoteapplication.MainActivity;
 import com.nqnghia.remoteapplication.R;
 import com.nqnghia.remoteapplication.ui.machine_info.MachineInfoFragment;
 
@@ -24,10 +25,15 @@ public class MachineSystemFragment extends Fragment {
     private ImageView machineImageView2;
     private ImageView machineImageView3;
     private ImageView machineImageView4;
+    private MainActivity mainActivity;
 
     @Override
     public void onAttach(Context context) {
         ctx = (FragmentActivity) context;
+        if (context instanceof MainActivity) {
+            mainActivity = (MainActivity) context;
+            mainActivity.getFab().hide();
+        }
         super.onAttach(context);
     }
 
@@ -115,5 +121,4 @@ public class MachineSystemFragment extends Fragment {
 //        });
         return root;
     }
-
 }

@@ -1,5 +1,6 @@
 package com.nqnghia.remoteapplication.ui.tasks;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.nqnghia.remoteapplication.MainActivity;
 import com.nqnghia.remoteapplication.R;
 
 public class TasksFragment extends Fragment {
 
     private TasksViewModel tasksViewModel;
+    private MainActivity mainActivity;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,5 +33,14 @@ public class TasksFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainActivity) {
+            mainActivity = (MainActivity) context;
+            mainActivity.getFab().show();
+        }
     }
 }

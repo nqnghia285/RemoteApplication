@@ -1,6 +1,8 @@
 package com.nqnghia.remoteapplication.ui.humidity_temperature_chart;
 
 import androidx.lifecycle.ViewModelProviders;
+
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -24,6 +26,7 @@ import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.nqnghia.remoteapplication.MainActivity;
 import com.nqnghia.remoteapplication.R;
 
 import java.util.ArrayList;
@@ -38,6 +41,7 @@ public class HumidityTemperatureFragment extends Fragment {
     private LineGraphSeries<DataPoint> series2;
 
     private Random random = new Random();
+    private MainActivity mainActivity;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -129,6 +133,15 @@ public class HumidityTemperatureFragment extends Fragment {
         for (int i = 0; i < 50; i++) {
             series1.appendData(new DataPoint(i, random.nextInt(50)), true, 80);
             series2.appendData(new DataPoint(i, random.nextInt(50)), true, 80);
+        }
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainActivity) {
+            mainActivity = (MainActivity) context;
+            mainActivity.getFab().hide();
         }
     }
 }
