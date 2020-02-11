@@ -15,6 +15,7 @@ import android.os.IBinder;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+
+import com.github.nkzawa.emitter.Emitter;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -186,6 +192,26 @@ public class LoginActivity extends AppCompatActivity implements ServiceConnectio
         if (iBinder instanceof LocalService.LocalBinder) {
             mLocalBinder = (LocalService.LocalBinder) iBinder;
             //TODO
+            mLocalBinder.initSocket("192.168.137.128", 3000);
+            mLocalBinder.on("server_send_sensorData", args -> {
+                JSONObject object = (JSONObject) args[0];
+                try {
+
+//                String data = object.getString("noidung");
+                    JSONObject data = object.getJSONObject("noidung");
+                    String enable = data.getString("status");
+//                String enable = object.getString("enable");
+                    Log.d("data receive led", enable);
+                    if (enable.equals("1")) {
+//                        blowerFanSwitch.setChecked(true);
+                    } else {
+//                        blowerFanSwitch.setChecked(false);
+                    }
+                    //--------------------------------------------------
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 

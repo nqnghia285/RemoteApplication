@@ -34,8 +34,6 @@ public class MachineInfoFragment extends Fragment {
     private Switch blowerFanSwitch;
     private Switch exhaustFanSwitch;
 
-    private FragmentActivity ctx;
-
     private Socket mSocket;
     private MainActivity mainActivity;
 
@@ -95,12 +93,11 @@ public class MachineInfoFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        ctx = (FragmentActivity) context;
+        super.onAttach(context);
         if (context instanceof MainActivity) {
             mainActivity = (MainActivity) context;
             mainActivity.getFab().hide();
         }
-        super.onAttach(context);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -124,7 +121,7 @@ public class MachineInfoFragment extends Fragment {
 //                args.putInt(MachineInfoFragment.ARG_POSITION, 1);
 //                machineInfoFragment.setArguments(args);
 
-                FragmentTransaction fragmentTransaction = ctx.getSupportFragmentManager().beginTransaction();
+                FragmentTransaction fragmentTransaction = mainActivity.getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, humidityTemperatureFragment);
                 fragmentTransaction.addToBackStack(null);
 
