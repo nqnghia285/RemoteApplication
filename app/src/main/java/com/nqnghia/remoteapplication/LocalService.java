@@ -14,10 +14,12 @@ import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class LocalService extends Service {
     private static final String TAG = "LocalService";
     private Socket mSocket;
+    private static ArrayList<String> mEvent = new ArrayList<>();
 
     private final LocalBinder mBinder = new LocalBinder();
 
@@ -28,6 +30,10 @@ public class LocalService extends Service {
     }
 
     public class LocalBinder extends Binder {
+
+        public LocalService getService() {
+            return LocalService.this;
+        }
 
         public void initSocket(String ip, int port) {
             try {
@@ -41,6 +47,7 @@ public class LocalService extends Service {
         public void on(String event, Emitter.Listener listener) {
             if (mSocket != null) {
                 mSocket.on(event, listener);
+                mEvent.add(event);
             } else {
                 Log.w(TAG, "on: mSocket is null");
             }
@@ -57,6 +64,7 @@ public class LocalService extends Service {
         public void off(String event) {
             if (mSocket != null) {
                 mSocket.off(event);
+                mEvent.remove(event);
             } else {
                 Log.w(TAG, "on: mSocket is null");
             }
@@ -65,6 +73,7 @@ public class LocalService extends Service {
         public void off(String event, Emitter.Listener listener) {
             if (mSocket != null) {
                 mSocket.off(event, listener);
+                mEvent.remove(event);
             } else {
                 Log.w(TAG, "on: mSocket is null");
             }
@@ -88,6 +97,7 @@ public class LocalService extends Service {
 
         public void close() {
             if (mSocket != null) {
+                mSocket.off();
                 mSocket.close();
             } else {
                 Log.w(TAG, "on: mSocket is null");
@@ -97,8 +107,10 @@ public class LocalService extends Service {
 
     @Override
     public void onDestroy() {
+        mSocket.off();
+        mSocket.close();
+        LocalService.this.stopSelf();
         super.onDestroy();
-        //TODO
     }
 
     @Override
