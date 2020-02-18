@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/nav_machine_info"
         android:name="com.nqnghia.remoteapplication.ui.machine_info.MachineInfoFragment"
-        android:label="@string/menu_machine_info"
+        android:label="@string/fragment_machine_info"
         tools:layout="@layout/fragment_machine_info" />
 
     <fragment
@@ -68,7 +68,13 @@
     <activity
         android:id="@+id/loginActivity"
         android:name="com.nqnghia.remoteapplication.LoginActivity"
-        android:label="activity_login"
+        android:label="@string/login"
         tools:layout="@layout/activity_login" />
+
+    <activity
+        android:id="@+id/nav_machine_list"
+        android:name="com.nqnghia.remoteapplication.ui.machine_list.MachineListFragment"
+        android:label="@string/fragment_machine_list"
+        tools:layout="@layout/fragment_machine_list" />
 
 </navigation>

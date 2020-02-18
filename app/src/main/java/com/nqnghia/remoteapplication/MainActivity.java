@@ -84,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }, 2000);
         } else {
-            stopService(new Intent(this, LocalService.class));
+
+
             Intent homeIntent = new Intent(Intent.ACTION_MAIN);
             homeIntent.addCategory(Intent.CATEGORY_HOME);
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

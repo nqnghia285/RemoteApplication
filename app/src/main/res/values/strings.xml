@@ -16,7 +16,7 @@
     <string name="menu_send">Send</string>
 
     <string name="menu_machine_system">Hệ thống máy sấy</string>
-    <string name="menu_machine_info">Thông tin máy sấy</string>
+    <string name="fragment_machine_info">Thông tin máy sấy</string>
     <string name="menu_status_devices_and_sensor">Trạng thái thiết bị và cảm biến</string>
     <string name="menu_notifications">Thông báo</string>
     <string name="menu_recipes">Công thức sấy</string>
@@ -26,9 +26,15 @@
     <string name="menu_settings">Cài đặt</string>
     <string name="menu_about">Giới thiệu ứng dụng</string>
     <string name="menu_logout">Đăng xuất</string>
+    <string name="fragment_machine_list">Danh sách máy sấy</string>
+    <string name="fragment_humidity_temperature_chart">Biểu đồ nhiệt độ và độ ẩm</string>
+    <string name="login">Đăng nhập</string>
 
     <!--oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo-->
 
     <string name="running">Đang hoạt động</string>
     <string name="stopped">Ngừng hoạt động</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -109,8 +109,6 @@ public class LocalService extends Service {
     public void onDestroy() {
         mSocket.off();
         mSocket.close();
-        LocalService.this.stopSelf();
-        super.onDestroy();
     }
 
     @Override
